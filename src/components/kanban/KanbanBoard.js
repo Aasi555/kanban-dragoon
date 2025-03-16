@@ -2,10 +2,38 @@
 import React, { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Box } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import KanbanColumn from './KanbanColumn';
 import KanbanHeader from './KanbanHeader';
 
+const useStyles = makeStyles((theme) => ({
+  boardContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%'
+  },
+  columnsContainer: {
+    overflowX: 'auto',
+    paddingBottom: 24,
+    '&::-webkit-scrollbar': {
+      height: 8,
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#d1d5db',
+      borderRadius: 4,
+    }
+  },
+  columns: {
+    display: 'flex',
+    gap: 16,
+    paddingBottom: 16,
+    minWidth: 'max-content'
+  }
+}));
+
 const KanbanBoard = () => {
+  const classes = useStyles();
+  
   const [columns, setColumns] = useState([
     {
       id: 'todo',
@@ -96,31 +124,21 @@ const KanbanBoard = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div className={classes.boardContainer}>
       <KanbanHeader />
-      <Box sx={{ 
-        overflowX: 'auto',
-        pb: 3,
-        '&::-webkit-scrollbar': {
-          height: 8,
-        },
-        '&::-webkit-scrollbar-thumb': {
-          backgroundColor: '#d1d5db',
-          borderRadius: 4,
-        }
-      }}>
+      <div className={classes.columnsContainer}>
         <DragDropContext onDragEnd={onDragEnd}>
-          <Box sx={{ display: 'flex', gap: 2, pb: 2, minWidth: 'max-content' }}>
+          <div className={classes.columns}>
             {columns.map(column => (
               <KanbanColumn 
                 key={column.id} 
                 column={column}
               />
             ))}
-          </Box>
+          </div>
         </DragDropContext>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

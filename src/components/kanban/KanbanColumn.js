@@ -1,9 +1,67 @@
 
 import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import { Box, Paper, Typography, Button, Chip } from '@mui/material';
+import { Paper, Typography, Button, Chip } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import KanbanCard from './KanbanCard';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  columnContainer: {
+    width: 280,
+    flexShrink: 0
+  },
+  columnPaper: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    backgroundColor: '#f9fafc',
+    borderRadius: 8,
+    overflow: 'hidden'
+  },
+  columnHeader: {
+    padding: '12px 16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottom: '1px solid #e9edf3',
+    backgroundColor: 'white'
+  },
+  columnTitle: {
+    fontWeight: 600
+  },
+  columnCount: {
+    height: 22,
+    fontSize: '0.75rem',
+    backgroundColor: '#eaecef',
+    color: '#57606a'
+  },
+  cardsList: {
+    padding: 12,
+    flexGrow: 1,
+    overflowY: 'auto',
+    minHeight: 100,
+    maxHeight: 'calc(100vh - 12rem)',
+    transition: 'background-color 0.2s ease'
+  },
+  cardsListDraggingOver: {
+    backgroundColor: '#f0f4ff'
+  },
+  columnFooter: {
+    padding: 12,
+    borderTop: '1px solid #e9edf3',
+    backgroundColor: 'white'
+  },
+  addButton: {
+    justifyContent: 'flex-start',
+    color: 'text.secondary',
+    textTransform: 'none',
+    backgroundColor: 'transparent',
+    '&:hover': {
+      backgroundColor: '#f0f4f8'
+    }
+  }
+}));
 
 /**
  * @param {Object} props
@@ -11,85 +69,48 @@ import KanbanCard from './KanbanCard';
  * @returns {JSX.Element}
  */
 const KanbanColumn = ({ column }) => {
+  const classes = useStyles();
+
   return (
-    <Box sx={{ width: 280, flexShrink: 0 }}>
-      <Paper 
-        elevation={1} 
-        sx={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          height: '100%',
-          backgroundColor: '#f9fafc',
-          borderRadius: 2,
-          overflow: 'hidden'
-        }}
-      >
-        <Box sx={{ 
-          px: 2, 
-          py: 1.5, 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between',
-          borderBottom: '1px solid #e9edf3',
-          backgroundColor: 'white'
-        }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+    <div className={classes.columnContainer}>
+      <Paper className={classes.columnPaper} elevation={1}>
+        <div className={classes.columnHeader}>
+          <Typography variant="subtitle1" className={classes.columnTitle}>
             {column.title}
           </Typography>
           <Chip 
             label={column.cards.length}
             size="small"
-            sx={{ 
-              height: 22, 
-              fontSize: '0.75rem', 
-              backgroundColor: '#eaecef',
-              color: '#57606a'
-            }}
+            className={classes.columnCount}
           />
-        </Box>
+        </div>
         
         <Droppable droppableId={column.id}>
           {(provided, snapshot) => (
-            <Box
+            <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              sx={{
-                p: 1.5,
-                flexGrow: 1,
-                overflowY: 'auto',
-                minHeight: 100,
-                maxHeight: 'calc(100vh - 12rem)',
-                backgroundColor: snapshot.isDraggingOver ? '#f0f4ff' : '#f9fafc',
-                transition: 'background-color 0.2s ease'
-              }}
+              className={`${classes.cardsList} ${snapshot.isDraggingOver ? classes.cardsListDraggingOver : ''}`}
             >
               {column.cards.map((card, index) => (
                 <KanbanCard key={card.id} card={card} index={index} />
               ))}
               {provided.placeholder}
-            </Box>
+            </div>
           )}
         </Droppable>
         
-        <Box sx={{ p: 1.5, borderTop: '1px solid #e9edf3', backgroundColor: 'white' }}>
+        <div className={classes.columnFooter}>
           <Button 
             fullWidth
             startIcon={<AddIcon />}
-            sx={{ 
-              justifyContent: 'flex-start',
-              color: 'text.secondary',
-              textTransform: 'none',
-              backgroundColor: 'transparent',
-              '&:hover': {
-                backgroundColor: '#f0f4f8'
-              }
-            }}
+            className={classes.addButton}
           >
             Add task
           </Button>
-        </Box>
+        </div>
       </Paper>
-    </Box>
+    </div>
   );
 };
 

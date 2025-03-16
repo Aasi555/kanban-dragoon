@@ -1,17 +1,26 @@
 
 import React from 'react';
 import KanbanBoard from '../components/kanban/KanbanBoard';
-import { Box } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  pageContainer: {
+    minHeight: '100vh',
+    backgroundColor: '#f5f7fa',
+    padding: '16px 24px',
+    '@media (min-width: 600px)': {
+      padding: '24px'
+    }
+  }
+}));
 
 const Index = () => {
+  const classes = useStyles();
+  
   return (
-    <Box sx={{ 
-      minHeight: '100vh', 
-      backgroundColor: '#f5f7fa',
-      padding: { xs: 2, md: 3 }
-    }}>
+    <div className={classes.pageContainer}>
       <KanbanBoard />
-    </Box>
+    </div>
   );
 };
 
