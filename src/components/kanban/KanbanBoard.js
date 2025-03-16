@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     gap: 16,
     paddingBottom: 16,
-    minWidth: 'max-content'
+    minWidth: 'max-content',
+    position: 'relative'
   }
 }));
 
@@ -37,32 +38,137 @@ const KanbanBoard = () => {
   const [columns, setColumns] = useState([
     {
       id: 'todo',
-      title: 'To Do',
+      title: 'Open',
       cards: [
-        { id: 'task-1', title: 'Research market trends', description: 'Analyze competitor strategies and identify market opportunities', labels: ['research', 'priority'] },
-        { id: 'task-2', title: 'Design new homepage', description: 'Create wireframes for the homepage redesign', labels: ['design'] }
+        { 
+          id: 'task-1', 
+          title: 'Pipe flanges are getting rusted on 2nd floor', 
+          actionNumber: 'AT-24111-004',
+          category: 'Plumbing',
+          approver: 'Amit Kumar',
+          status: 'Approval Pending',
+          dueDate: '24-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'John Doe', avatar: 'J' },
+            { id: 2, name: 'Suresh Kumar', avatar: 'S' },
+            { id: 3, name: 'Amit Kumar', avatar: 'A' }
+          ]
+        },
+        { 
+          id: 'task-2', 
+          title: 'Spilled water on the floor 2', 
+          actionNumber: 'AT-24111-003',
+          category: 'Plumbing',
+          approver: 'Amit Kumar',
+          status: 'Unassigned',
+          dueDate: '24-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'Suresh Kumar', avatar: 'S' }
+          ]
+        },
+        { 
+          id: 'task-3', 
+          title: 'Elevators stopped working due to heavy load', 
+          actionNumber: 'AT-24111-002',
+          category: 'Plumbing',
+          approver: 'Amit Kumar',
+          status: 'Unassigned',
+          dueDate: '24-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'John Doe', avatar: 'J' },
+            { id: 2, name: 'Suresh Kumar', avatar: 'S' },
+            { id: 3, name: 'Amit Kumar', avatar: 'A' }
+          ]
+        }
       ],
     },
     {
       id: 'in-progress',
       title: 'In Progress',
       cards: [
-        { id: 'task-3', title: 'Implement authentication', description: 'Add user login and registration functionality', labels: ['development', 'priority'] },
-        { id: 'task-4', title: 'Create API endpoints', description: 'Develop RESTful APIs for the application', labels: ['development'] }
+        { 
+          id: 'task-4', 
+          title: 'Pipe flanges are getting rusted on 2nd floor', 
+          actionNumber: 'AT-24108-004',
+          category: 'Plumbing',
+          reviewer: 'Suresh Kumar',
+          status: 'Assigned',
+          dueDate: '16-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'John Doe', avatar: 'J' },
+            { id: 2, name: 'Suresh Kumar', avatar: 'S' }
+          ]
+        },
+        { 
+          id: 'task-5', 
+          title: 'Routine check of rigging components for safety', 
+          actionNumber: 'AT-24108-002',
+          category: 'Site Safety',
+          reviewer: 'Suresh Kumar',
+          status: 'Overdue',
+          dueDate: '16-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'John Doe', avatar: 'J' },
+            { id: 2, name: 'Suresh Kumar', avatar: 'S' },
+            { id: 3, name: 'Brooklyn Simmons', avatar: 'B' }
+          ]
+        },
+        { 
+          id: 'task-9', 
+          title: 'Remove scarp from the LNG Pipes', 
+          actionNumber: 'AT-24108-003',
+          category: 'Place of Assembly',
+          reviewer: 'Suresh Kumar',
+          status: 'Ongoing',
+          dueDate: '16-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'John Doe', avatar: 'J' },
+            { id: 2, name: 'Brooklyn Simmons', avatar: 'B' },
+            { id: 3, name: 'Shyama Robin', avatar: 'S' },
+            { id: 4, name: 'Ravi Varma', avatar: 'R' },
+            { id: 5, name: 'Mayur Jadhar', avatar: 'M' }
+          ]
+        }
       ],
     },
     {
       id: 'review',
-      title: 'Review',
+      title: 'Completed',
       cards: [
-        { id: 'task-5', title: 'Review pull requests', description: 'Code review for recent feature implementations', labels: ['code review'] }
+        { 
+          id: 'task-6', 
+          title: 'Move reinforcing steel bars to designated area', 
+          actionNumber: 'AT-24101-001',
+          category: 'Place of Assembly',
+          reviewer: 'Suresh Kumar',
+          status: 'Closed',
+          dueDate: '12-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'John Doe', avatar: 'J' },
+            { id: 2, name: 'Suresh Kumar', avatar: 'S' },
+            { id: 3, name: 'Amit Kumar', avatar: 'A' }
+          ]
+        }
       ],
     },
     {
       id: 'done',
-      title: 'Done',
+      title: 'Rejected',
       cards: [
-        { id: 'task-6', title: 'Update dependencies', description: 'Update project packages to the latest versions', labels: ['maintenance'] }
+        { 
+          id: 'task-7', 
+          title: 'Moving heavy materials to designated areas', 
+          actionNumber: 'AT-24101-001',
+          category: 'Place of Assembly',
+          reviewer: 'Suresh Kumar',
+          status: 'Rejected',
+          dueDate: '12-Nov-2024',
+          teamMembers: [
+            { id: 1, name: 'John Doe', avatar: 'J' },
+            { id: 2, name: 'Suresh Kumar', avatar: 'S' },
+            { id: 3, name: 'Amit Kumar', avatar: 'A' }
+          ]
+        }
       ],
     }
   ]);

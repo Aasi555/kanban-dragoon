@@ -44,10 +44,10 @@ const KanbanHeader = () => {
     <div className={classes.headerContainer}>
       <div className={classes.titleContainer}>
         <Typography variant="h4">
-          Project Tasks
+          Action Items
         </Typography>
         <Typography variant="body1">
-          Manage and organize your project workflow
+          Track and manage all maintenance and construction tasks
         </Typography>
       </div>
       <div className={classes.buttonContainer}>
