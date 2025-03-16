@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
   columnContainer: {
     width: 280,
     flexShrink: 0,
-    transition: 'width 0.3s ease'
+    transition: 'width 0.3s ease',
+    position: 'relative'
   },
   columnContainerMinimized: {
     width: 58,
@@ -198,15 +199,6 @@ const KanbanColumn = ({ column }) => {
               style={{ marginLeft: 8, backgroundColor: bg, color: color }}
             />
           </div>
-          <div className={classes.columnControls}>
-            <IconButton 
-              size="small" 
-              className={classes.collapseButton}
-              onClick={toggleMinimize}
-            >
-              {minimized ? <ChevronRightIcon fontSize="small" /> : <ChevronLeftIcon fontSize="small" />}
-            </IconButton>
-          </div>
         </div>
         
         {!minimized && (
@@ -238,6 +230,17 @@ const KanbanColumn = ({ column }) => {
           </>
         )}
       </Paper>
+      
+      {/* Arrow button to collapse/expand column */}
+      <div className={classes.columnControls}>
+        <IconButton 
+          size="small" 
+          className={classes.collapseButton}
+          onClick={toggleMinimize}
+        >
+          {minimized ? <ChevronRightIcon fontSize="small" /> : <ChevronLeftIcon fontSize="small" />}
+        </IconButton>
+      </div>
     </div>
   );
 };
