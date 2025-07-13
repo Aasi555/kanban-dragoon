@@ -1,22 +1,22 @@
-# Welcome to your Lovable project
+# Welcome to your aasif project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/856abf07-5e8e-4e9e-8022-fe97058ee678
+**URL**: https://aasif.dev/projects/856abf07-5e8e-4e9e-8022-fe97058ee678
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
+**Use aasif**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/856abf07-5e8e-4e9e-8022-fe97058ee678) and start prompting.
+Simply visit the [aasif Project](https://aasif.dev/projects/856abf07-5e8e-4e9e-8022-fe97058ee678) and start prompting.
 
-Changes made via Lovable will be committed automatically to this repo.
+Changes made via aasif will be committed automatically to this repo.
 
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in aasif.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -62,8 +62,8 @@ This project is built with .
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/856abf07-5e8e-4e9e-8022-fe97058ee678) and click on Share -> Publish.
+Simply open [aasif](https://aasif.dev/projects/856abf07-5e8e-4e9e-8022-fe97058ee678) and click on Share -> Publish.
 
 ## I want to use a custom domain - is that possible?
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.aasif.dev/tips-tricks/custom-domain/)
